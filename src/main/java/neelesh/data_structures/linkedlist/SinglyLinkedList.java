@@ -1,6 +1,8 @@
 package main.java.neelesh.data_structures.linkedlist;
 
+import main.java.neelesh.data_structures.linkedlist.interfaces.ILinkedListOperations;
 import main.java.neelesh.data_structures.linkedlist.interfaces.ISinglyLinkedListOperations;
+import main.java.neelesh.data_structures.linkedlist.nodes.Node;
 import main.java.neelesh.data_structures.linkedlist.nodes.SinglyLinkedListNode;
 
 public class SinglyLinkedList implements ISinglyLinkedListOperations {

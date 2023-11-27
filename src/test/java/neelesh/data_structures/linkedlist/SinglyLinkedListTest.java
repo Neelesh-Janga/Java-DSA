@@ -102,12 +102,12 @@ public class SinglyLinkedListTest {
         SinglyLinkedListNode list2 = operations.create(4, 5, 6);
 
         // Test Case 1: Concatenate two non-empty lists
-        operations.concat(list1, list2);
+        list1 = operations.concat(list1, list2);
         operations.display(list1); // Expected: 1 --> 2 --> 3 --> 4 --> 5 --> 6
 
         // Test Case 2: Concatenate with an empty list
         SinglyLinkedListNode emptyList = null;
-        operations.concat(list1, emptyList);
+        list1 = operations.concat(list1, emptyList);
         operations.display(list1); // Expected: 1 --> 2 --> 3 --> 4 --> 5 --> 6
     }
 
