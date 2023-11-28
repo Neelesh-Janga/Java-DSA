@@ -16,12 +16,6 @@ public interface ILinkedListOperations<N extends Node> {
 
     N concat(N list1, N list2);
 
-    N reverse(N head);
-
-    N reverseUsingRecursion(N head);
-
-    boolean isLooped(N head);
-
     N delete(N head, int number);
 
     int findMiddleNumber(N head);
@@ -33,4 +27,8 @@ public interface ILinkedListOperations<N extends Node> {
     N getIntersectionNode(N list1, N list2);
 
     N deleteEntireList(N head);
+
+    N mergerSortedLinkedLists(N list1, N list2, boolean ascending);
+
+    N findUnion(N list1, N list2);
 }

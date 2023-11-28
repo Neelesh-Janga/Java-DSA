@@ -1,9 +1,9 @@
 package main.java.neelesh.data_structures.linkedlist;
 
-import main.java.neelesh.data_structures.linkedlist.interfaces.ILinkedListOperations;
 import main.java.neelesh.data_structures.linkedlist.interfaces.ISinglyLinkedListOperations;
-import main.java.neelesh.data_structures.linkedlist.nodes.Node;
 import main.java.neelesh.data_structures.linkedlist.nodes.SinglyLinkedListNode;
+
+import java.util.ArrayList;
 
 public class SinglyLinkedList implements ISinglyLinkedListOperations {
 
@@ -43,15 +43,16 @@ public class SinglyLinkedList implements ISinglyLinkedListOperations {
         }
 
         SinglyLinkedListNode newNode = new SinglyLinkedListNode(number);
-        int length = 0;
-        if (index == 0 || (head == null && index == 0)) {
+        if (index == 0) {
             newNode.next = head;
             head = newNode;
         } else {
             SinglyLinkedListNode tail = head;
-            while (index != 1 && tail.next != null) {
+            int length = 0;
+            while (index > 1 && (tail != null && tail.next != null)) {
                 tail = tail.next;
                 index--;
+                length++;
             }
             if (index > 1) {
                 System.out.println("Not a valid Index. Length of Singly LinkedList is " + length + 1);
@@ -255,6 +256,90 @@ public class SinglyLinkedList implements ISinglyLinkedListOperations {
             follow = head;
             head = head.next;
             follow.next = null;
+        }
+
+        return head;
+    }
+
+    @Override
+    public void removeLoop(SinglyLinkedListNode head) {
+        if (head == null) return;
+        if (head.next == null) return;
+
+        SinglyLinkedListNode slow = head, fast = head;
+
+        do {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (fast == null || fast.next == null) {
+                System.out.println("No loop detected");
+                return;
+            }
+        } while (slow != fast);
+
+        slow = head;
+
+        while (slow.next != fast.next) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        fast.next = null;
+    }
+
+    @Override
+    public SinglyLinkedListNode mergerSortedLinkedLists(SinglyLinkedListNode list1, SinglyLinkedListNode list2, boolean ascending) {
+
+        if (list1 == null && list2 == null) return null;
+        if (list1 == null) return list2;
+        if (list2 == null) return list1;
+        if (list1.val > list2.val) return mergerSortedLinkedLists(list2, list1, ascending);
+
+        SinglyLinkedListNode head1 = list1, tail1, head2 = list2, tail2;
+
+        while (head1 != null && head2 != null) {
+            if ((ascending && head1.val < head2.val) || (!ascending && head1.val >= head2.val)) {
+                tail1 = head1;
+                head1 = head1.next;
+                if (head1 == null || (ascending && head2.val <= head1.val) || (!ascending && head2.val >= head1.val))
+                    tail1.next = head2;
+            } else {
+                tail2 = head2;
+                head2 = head2.next;
+                if (head2 == null || (ascending && head1.val <= head2.val) || (!ascending && head1.val >= head2.val))
+                    tail2.next = head1;
+            }
+        }
+
+        return ascending ? list1 : list2;
+    }
+
+    @Override
+    public SinglyLinkedListNode findUnion(SinglyLinkedListNode list1, SinglyLinkedListNode list2) {
+        ArrayList<Integer> list = new ArrayList<>();
+        SinglyLinkedListNode head = null, ptr = list1;
+
+        while (ptr != null) {
+            if (!list.contains(ptr.val)) list.add(ptr.val);
+            ptr = ptr.next;
+        }
+
+        ptr = list2;
+
+        while (ptr != null) {
+            if (!list.contains(ptr.val)) list.add(ptr.val);
+            ptr = ptr.next;
+        }
+
+        for (Integer i : list) {
+            SinglyLinkedListNode newNode = new SinglyLinkedListNode(i);
+            if (head == null) {
+                head = newNode;
+                ptr = head;
+            } else {
+                ptr.next = newNode;
+                ptr = newNode;
+            }
         }
 
         return head;

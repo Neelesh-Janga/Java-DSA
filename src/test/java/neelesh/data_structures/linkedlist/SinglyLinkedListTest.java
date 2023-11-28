@@ -20,6 +20,9 @@ public class SinglyLinkedListTest {
         testCopy();
         testGetIntersectionNode();
         testDeleteEntireList();
+        testRemoveLoop();
+        testMergeSortedLinkedLists();
+        testFindUnion();
     }
 
     private static void testCreate() {
@@ -276,5 +279,102 @@ public class SinglyLinkedListTest {
         SinglyLinkedListNode emptyList = null;
         operations.deleteEntireList(emptyList);
         operations.display(emptyList); // Expected: (empty list)
+    }
+
+    private static void testRemoveLoop() {
+        SinglyLinkedList operations = new SinglyLinkedList();
+
+        // Test Case 1: Removing a loop
+        SinglyLinkedListNode list1 = createLinkedListWithLoop();
+        operations.removeLoop(list1);
+        System.out.print("List1 after removing loop: ");
+        operations.display(list1); // Expected: No loop detected
+
+        // Test Case 2: Remove loop in a non-empty list without a loop
+        SinglyLinkedListNode list2 = operations.create(1, 2, 3, 4, 5);
+        System.out.print("List2 before removing loop: ");
+        operations.removeLoop(list2);
+
+        // Test Case 3: Remove loop in an empty list
+        SinglyLinkedListNode emptyList = null;
+        operations.removeLoop(emptyList); // Expected: No loop detected
+    }
+
+    private static SinglyLinkedListNode createLinkedListWithLoop() {
+        SinglyLinkedListNode head = new SinglyLinkedListNode(1);
+        head.next = new SinglyLinkedListNode(2);
+        head.next.next = new SinglyLinkedListNode(3);
+        head.next.next.next = new SinglyLinkedListNode(4);
+        head.next.next.next.next = new SinglyLinkedListNode(5);
+
+        // Creating a loop
+        head.next.next.next.next.next = head.next.next;
+
+        return head;
+    }
+
+    private static void testMergeSortedLinkedLists() {
+        SinglyLinkedList operations = new SinglyLinkedList();
+
+        // Test Case 1: Merge two non-empty sorted lists in ascending order
+        SinglyLinkedListNode list1 = operations.create(1, 3, 5, 7);
+        SinglyLinkedListNode list2 = operations.create(2, 4, 6, 8);
+        SinglyLinkedListNode mergedList1 = operations.mergerSortedLinkedLists(list1, list2, true);
+        System.out.print("Merged list in ascending order: ");
+        operations.display(mergedList1); // Expected: 1 --> 2 --> 3 --> 4 --> 5 --> 6 --> 7 --> 8
+
+        // Test Case 2: Merge two non-empty sorted lists in descending order
+        SinglyLinkedListNode list3 = operations.create(9, 7, 5, 3);
+        SinglyLinkedListNode list4 = operations.create(8, 6, 4, 2);
+        SinglyLinkedListNode mergedList2 = operations.mergerSortedLinkedLists(list3, list4, false);
+        System.out.print("Merged list in descending order: ");
+        operations.display(mergedList2); // Expected: 9 --> 8 --> 7 --> 6 --> 5 --> 4 --> 3 --> 2
+
+        // Test Case 3: Merge an empty list with a non-empty list
+        SinglyLinkedListNode emptyList = null;
+        SinglyLinkedListNode mergedList3 = operations.mergerSortedLinkedLists(emptyList, list1, true);
+        System.out.print("Merged list with an empty list: ");
+        operations.display(mergedList3); // Expected: 1 --> 2 --> 3 --> 4 --> 5 --> 6 --> 7 --> 8
+
+        // Test Case 4: Merge two empty lists
+        SinglyLinkedListNode mergedList4 = operations.mergerSortedLinkedLists(emptyList, emptyList, true);
+        System.out.print("Merged empty list: ");
+        operations.display(mergedList4); // Expected: (empty list)
+
+        // Test Case 5: Merge two lists with some common elements
+        SinglyLinkedListNode list5 = operations.create(1, 2, 3);
+        SinglyLinkedListNode list6 = operations.create(2, 3, 4);
+        SinglyLinkedListNode mergedList5 = operations.mergerSortedLinkedLists(list5, list6, true);
+        System.out.print("\nMerged list with common elements: ");
+        operations.display(mergedList5); // Expected: 1 --> 2 --> 2 --> 3 --> 3 --> 4
+
+        // Test Case 6: Merge two lists with some common elements
+        SinglyLinkedListNode list7 = operations.create(1, 2, 3, 3);
+        SinglyLinkedListNode list8 = operations.create(2, 3, 4, 5, 6, 6, 6, 7);
+        SinglyLinkedListNode mergedList6 = operations.mergerSortedLinkedLists(list7, list8, true);
+        System.out.print("Merged list with common elements: ");
+        operations.display(mergedList6); // Expected: 1 --> 2 --> 2 --> 3 --> 3 --> 3 --> 4 --> 5 --> 6 --> 6 --> 6 --> 7
+    }
+
+    private static void testFindUnion() {
+        SinglyLinkedList operations = new SinglyLinkedList();
+
+        // Test Case 1: Find union of two non-empty lists
+        SinglyLinkedListNode list1 = operations.create(1, 2, 3, 4, 5);
+        SinglyLinkedListNode list2 = operations.create(3, 4, 5, 6, 7);
+        SinglyLinkedListNode unionList1 = operations.findUnion(list1, list2);
+        System.out.print("Union of list1 and list2: ");
+        operations.display(unionList1); // Expected: 1 --> 2 --> 3 --> 4 --> 5 --> 6 --> 7
+
+        // Test Case 2: Find union of an empty list with a non-empty list
+        SinglyLinkedListNode emptyList = null;
+        SinglyLinkedListNode unionList2 = operations.findUnion(emptyList, list1);
+        System.out.print("Union of an empty list and list1: ");
+        operations.display(unionList2); // Expected: 1 --> 2 --> 3 --> 4 --> 5
+
+        // Test Case 3: Find union of two empty lists
+        SinglyLinkedListNode unionList3 = operations.findUnion(emptyList, emptyList);
+        System.out.print("Union of empty lists: ");
+        operations.display(unionList3); // Expected: (empty list)
     }
 }
