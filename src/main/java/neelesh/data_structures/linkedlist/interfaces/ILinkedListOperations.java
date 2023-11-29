@@ -1,5 +1,6 @@
 package main.java.neelesh.data_structures.linkedlist.interfaces;
 
+import main.java.neelesh.data_structures.linkedlist.nodes.DoublyLinkedListNode;
 import main.java.neelesh.data_structures.linkedlist.nodes.Node;
 import main.java.neelesh.data_structures.linkedlist.nodes.SinglyLinkedListNode;
 
@@ -31,4 +32,8 @@ public interface ILinkedListOperations<N extends Node> {
     N mergerSortedLinkedLists(N list1, N list2, boolean ascending);
 
     N findUnion(N list1, N list2);
+
+    N reverse(N head);
+
+    N reverseUsingRecursion(N head);
 }
