@@ -187,6 +187,9 @@ public class SinglyLinkedListTest {
         // Test Case 3: Delete the last element
         list = operations.delete(list, 9);
         operations.display(list); // Expected: 3 --> 4 --> 5 --> 6 --> 7 --> 8
+
+        list = operations.delete(operations.create(1,1,1,1,1,2), 1);
+        operations.display(list); // Expected: 2
     }
 
     private static void testFindMiddleNumber() {
