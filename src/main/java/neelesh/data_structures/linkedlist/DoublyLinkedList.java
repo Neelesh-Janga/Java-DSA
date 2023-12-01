@@ -246,10 +246,10 @@ public class DoublyLinkedList implements IDoublyLinkedListOperations {
     }
 
     @Override
-    public DoublyLinkedListNode mergerSortedLinkedLists(DoublyLinkedListNode list1, DoublyLinkedListNode list2, boolean ascending) {
+    public DoublyLinkedListNode mergeSortedLinkedLists(DoublyLinkedListNode list1, DoublyLinkedListNode list2, boolean ascending) {
         if (list1 == null) return list2;
         if (list2 == null) return list1;
-        if (list1.val > list2.val) return mergerSortedLinkedLists(list2, list1, ascending);
+        if (list1.val > list2.val) return mergeSortedLinkedLists(list2, list1, ascending);
 
         DoublyLinkedListNode head1 = list1, tail1, head2 = list2, tail2;
 

@@ -257,39 +257,39 @@ public class DoublyLinkedListTest {
         // Test Case 1: Merge two non-empty sorted lists in ascending order
         DoublyLinkedListNode list1 = operations.create(1, 3, 5, 7);
         DoublyLinkedListNode list2 = operations.create(2, 4, 6, 8);
-        DoublyLinkedListNode mergedList1 = operations.mergerSortedLinkedLists(list1, list2, true);
+        DoublyLinkedListNode mergedList1 = operations.mergeSortedLinkedLists(list1, list2, true);
         System.out.println("Merged list in ascending order:");
         operations.display(mergedList1); // Expected: (FW) 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 ::: (BW) 8 - 7 - 6 - 5 - 4 - 3 - 2 - 1
 
         // Test Case 2: Merge two non-empty sorted lists in descending order
         DoublyLinkedListNode list3 = operations.create(9, 7, 5, 3);
         DoublyLinkedListNode list4 = operations.create(8, 6, 4, 2);
-        DoublyLinkedListNode mergedList2 = operations.mergerSortedLinkedLists(list3, list4, false);
+        DoublyLinkedListNode mergedList2 = operations.mergeSortedLinkedLists(list3, list4, false);
         System.out.println("Merged list in descending order:");
         operations.display(mergedList2); // Expected: (FW) 9 - 8 - 7 - 6 - 5 - 4 - 3 - 2 ::: (BW) 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9
 
         // Test Case 3: Merge an empty list with a non-empty list
         DoublyLinkedListNode emptyList = null;
-        DoublyLinkedListNode mergedList3 = operations.mergerSortedLinkedLists(emptyList, list1, true);
+        DoublyLinkedListNode mergedList3 = operations.mergeSortedLinkedLists(emptyList, list1, true);
         System.out.println("Merged list with an empty list:");
         operations.display(mergedList3); // Expected: (FW) 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 ::: (BW) 8 - 7 - 6 - 5 - 4 - 3 - 2 - 1
 
         // Test Case 4: Merge two empty lists
-        DoublyLinkedListNode mergedList4 = operations.mergerSortedLinkedLists(emptyList, emptyList, true);
+        DoublyLinkedListNode mergedList4 = operations.mergeSortedLinkedLists(emptyList, emptyList, true);
         System.out.println("Merged empty list:");
         operations.display(mergedList4); // Expected: (empty list)
 
         // Test Case 5: Merge two lists with some common elements
         DoublyLinkedListNode list5 = operations.create(1, 2, 3);
         DoublyLinkedListNode list6 = operations.create(2, 3, 4);
-        DoublyLinkedListNode mergedList5 = operations.mergerSortedLinkedLists(list5, list6, true);
+        DoublyLinkedListNode mergedList5 = operations.mergeSortedLinkedLists(list5, list6, true);
         System.out.println("Merged list with common elements:");
         operations.display(mergedList5); // Expected: (FW) 1 - 2 - 2 - 3 - 3 - 4 ::: (BW) 4 - 3 - 3 - 2 - 2 - 1
 
         // Test Case 6: Merge two lists with some common elements
         DoublyLinkedListNode list7 = operations.create(1, 2, 3, 3);
         DoublyLinkedListNode list8 = operations.create(2, 3, 4, 5, 6, 6, 6, 7);
-        DoublyLinkedListNode mergedList6 = operations.mergerSortedLinkedLists(list7, list8, true);
+        DoublyLinkedListNode mergedList6 = operations.mergeSortedLinkedLists(list7, list8, true);
         System.out.println("Merged list with common elements:");
         operations.display(mergedList6); // Expected: (FW) 1 - 2 - 2 - 3 - 3 - 3 - 4 - 5 - 6 - 6 - 6 - 7 ::: (BW) 7 - 6 - 6 - 6 - 5 - 4 - 3 - 3 - 3 - 2 - 2 - 1
     }
