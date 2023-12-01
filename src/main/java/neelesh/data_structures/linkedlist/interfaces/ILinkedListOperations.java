@@ -23,7 +23,7 @@ public interface ILinkedListOperations<N extends Node> {
 
     N deleteEntireList(N head);
 
-    N mergerSortedLinkedLists(N list1, N list2, boolean ascending);
+    N mergeSortedLinkedLists(N list1, N list2, boolean ascending);
 
     N findUnion(N list1, N list2);
 

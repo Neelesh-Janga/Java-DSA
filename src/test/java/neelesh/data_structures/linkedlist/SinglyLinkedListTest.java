@@ -322,39 +322,39 @@ public class SinglyLinkedListTest {
         // Test Case 1: Merge two non-empty sorted lists in ascending order
         SinglyLinkedListNode list1 = operations.create(1, 3, 5, 7);
         SinglyLinkedListNode list2 = operations.create(2, 4, 6, 8);
-        SinglyLinkedListNode mergedList1 = operations.mergerSortedLinkedLists(list1, list2, true);
+        SinglyLinkedListNode mergedList1 = operations.mergeSortedLinkedLists(list1, list2, true);
         System.out.print("Merged list in ascending order: ");
         operations.display(mergedList1); // Expected: 1 --> 2 --> 3 --> 4 --> 5 --> 6 --> 7 --> 8
 
         // Test Case 2: Merge two non-empty sorted lists in descending order
         SinglyLinkedListNode list3 = operations.create(9, 7, 5, 3);
         SinglyLinkedListNode list4 = operations.create(8, 6, 4, 2);
-        SinglyLinkedListNode mergedList2 = operations.mergerSortedLinkedLists(list3, list4, false);
+        SinglyLinkedListNode mergedList2 = operations.mergeSortedLinkedLists(list3, list4, false);
         System.out.print("Merged list in descending order: ");
         operations.display(mergedList2); // Expected: 9 --> 8 --> 7 --> 6 --> 5 --> 4 --> 3 --> 2
 
         // Test Case 3: Merge an empty list with a non-empty list
         SinglyLinkedListNode emptyList = null;
-        SinglyLinkedListNode mergedList3 = operations.mergerSortedLinkedLists(emptyList, list1, true);
+        SinglyLinkedListNode mergedList3 = operations.mergeSortedLinkedLists(emptyList, list1, true);
         System.out.print("Merged list with an empty list: ");
         operations.display(mergedList3); // Expected: 1 --> 2 --> 3 --> 4 --> 5 --> 6 --> 7 --> 8
 
         // Test Case 4: Merge two empty lists
-        SinglyLinkedListNode mergedList4 = operations.mergerSortedLinkedLists(emptyList, emptyList, true);
+        SinglyLinkedListNode mergedList4 = operations.mergeSortedLinkedLists(emptyList, emptyList, true);
         System.out.print("Merged empty list: ");
         operations.display(mergedList4); // Expected: (empty list)
 
         // Test Case 5: Merge two lists with some common elements
         SinglyLinkedListNode list5 = operations.create(1, 2, 3);
         SinglyLinkedListNode list6 = operations.create(2, 3, 4);
-        SinglyLinkedListNode mergedList5 = operations.mergerSortedLinkedLists(list5, list6, true);
+        SinglyLinkedListNode mergedList5 = operations.mergeSortedLinkedLists(list5, list6, true);
         System.out.print("\nMerged list with common elements: ");
         operations.display(mergedList5); // Expected: 1 --> 2 --> 2 --> 3 --> 3 --> 4
 
         // Test Case 6: Merge two lists with some common elements
         SinglyLinkedListNode list7 = operations.create(1, 2, 3, 3);
         SinglyLinkedListNode list8 = operations.create(2, 3, 4, 5, 6, 6, 6, 7);
-        SinglyLinkedListNode mergedList6 = operations.mergerSortedLinkedLists(list7, list8, true);
+        SinglyLinkedListNode mergedList6 = operations.mergeSortedLinkedLists(list7, list8, true);
         System.out.print("Merged list with common elements: ");
         operations.display(mergedList6); // Expected: 1 --> 2 --> 2 --> 3 --> 3 --> 3 --> 4 --> 5 --> 6 --> 6 --> 6 --> 7
     }

@@ -288,12 +288,12 @@ public class SinglyLinkedList implements ISinglyLinkedListOperations {
     }
 
     @Override
-    public SinglyLinkedListNode mergerSortedLinkedLists(SinglyLinkedListNode list1, SinglyLinkedListNode list2, boolean ascending) {
+    public SinglyLinkedListNode mergeSortedLinkedLists(SinglyLinkedListNode list1, SinglyLinkedListNode list2, boolean ascending) {
 
         if (list1 == null && list2 == null) return null;
         if (list1 == null) return list2;
         if (list2 == null) return list1;
-        if (list1.val > list2.val) return mergerSortedLinkedLists(list2, list1, ascending);
+        if (list1.val > list2.val) return mergeSortedLinkedLists(list2, list1, ascending);
 
         SinglyLinkedListNode head1 = list1, tail1, head2 = list2, tail2;
 
