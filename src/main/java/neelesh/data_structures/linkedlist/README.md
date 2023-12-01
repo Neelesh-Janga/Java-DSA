@@ -93,7 +93,7 @@
 - **Space Complexity:** O(m + n), where m and n are the lengths of list1 and list2, respectively.
 
 
-## II. Doubly Linked List Operations
+## II. Doubly Linked List
 
 ### 1. Create - `create(int... varArgs)`
 - **Time Complexity:** O(n), where n is the number of elements.
